@@ -1,0 +1,59 @@
+Python course:
+
+To activate virtual environment: env\Scripts\activate
+
+
+Gitbash activation with no error:
+env/Scripts/activate
+
+
+mkdir -p envs
+python -m venv envs/starter-env
+source `pwd`/envs/starter-env/bin/activate
+
+
+Connecting to a database:
+first using pip install to install the driver
+e.g pip install cx-oracle
+
+then use import mysql.connector
+for oracle: import cx_oracle
+
+#create connection
+con = cx_oracle.connect('usrname/password@localhost')
+cursor = con.cursor()
+
+cursor.execute(sqlquery) -->  single query to execute
+
+cursor.executemany(sqlquery) --> to execute single query with multiple bun variable
+
+================================
+
+# importing module
+import cx_Oracle
+
+# Create a table in Oracle database
+try:
+
+	con = cx_Oracle.connect('tiger/scott@localhost:1521/xe')
+	print(con.version)
+
+	# Now execute the sqlquery
+	cursor = con.cursor()
+
+	# Creating a table employee
+	cursor.execute(
+		"create table employee(empid integer primary key, name varchar2(30), salary number(10, 2))")
+
+	print("Table Created successfully")
+
+except cx_Oracle.DatabaseError as e:
+	print("There is a problem with Oracle", e)
+
+# by writing finally if any error occurs
+# then also we can close the all database operation
+finally:
+	if cursor:
+		cursor.close()
+	if con:
+		con.close()
