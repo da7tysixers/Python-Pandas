@@ -57,3 +57,31 @@ finally:
 		cursor.close()
 	if con:
 		con.close()
+
+
+
+=====
+Numpy
+=====
+To convert a list to a numpy list use:-
+First Import numpy package then use it to convert to array
+new_list =  [1,2,3]
+my_list = np.array(new_list)
+
+Functions and methods contains the "()" whereas attributes do not.
+
+Syntax to call an array of 2D
+2d array sample
+
+col     0 1 2 3 4
+array([[1,2,3,4,5]      rows 0
+       [2,4,6,8,9]])         1
+      
+Some Numpy functions
+import numpy as np
+np.mean()
+np.median()
+np.corrcoef(two argument)
+np.std()
+np.sort()
+np.sum()
