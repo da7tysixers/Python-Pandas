@@ -85,3 +85,17 @@ np.corrcoef(two argument)
 np.std()
 np.sort()
 np.sum()
+
+
+
+#****************************/
+# Data structures
+
+#Structured Prgramming
+# > Control Structures e.g IF this THEN a ELSE b WHILE this DO that
+# Subroutines Procedures Functions Methods.
+#Python is an iterpreted language.
+# Python is a garbage collector. Whatever is written in memory is handled by python interpreter
+     # Tedious memory bookkeeping is not needed.
+     # Avoid common memory leak
+# Python is a daynamically typed language.
