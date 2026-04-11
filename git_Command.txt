@@ -1,0 +1,38 @@
+# === GIT ESSENTIALS CHEAT SHEET ===
+
+# 1. SETUP (Do this once)
+git config --global user.name "Your Name"
+git config --global user.email "your@email.com"
+git config --global credential.helper store    # Remembers your login so you don't type it every time
+
+# 2. STARTING A PROJECT
+git init                        # Start a new local repo
+git clone <url>                 # Download an existing repo
+git remote add origin <url>     # Link local repo to GitHub (if not cloned)
+
+# 3. THE DAILY WORKFLOW (The "Stage & Snapshot")
+git status                      # Check what has changed
+git add .                       # Stage ALL changes for the next commit
+git add <file>                  # Stage only a specific file
+git commit -m "Brief message"   # Save your staged changes locally
+
+# 4. WORKING WITH BRANCHES
+git branch                      # List all branches
+git switch -c <name>            # Create and switch to a new branch
+git switch <name>               # Switch back to an existing branch (e.g., git switch main)
+git merge <branch>              # Merge another branch into your current one
+
+# 5. SYNCING WITH GITHUB (The "Push & Pull")
+git pull origin main            # Get the latest code from GitHub (Do this BEFORE pushing)
+git push -u origin <branch>     # Push to GitHub and link branches (only need -u the first time)
+git push                        # Push changes (works after you've used -u once)
+
+# 6. UNDOING & FIXING
+git restore <file>              # Discard changes in a file (back to last commit)
+git commit --amend -m "New msg" # Fix the message of your last (unpushed) commit
+git reset --soft HEAD~1         # Undo the last commit but KEEP your work in the files
+git reset --hard HEAD~1         # DELETE the last commit and all work in it (Careful!)
+
+# 7. SAVING WORK FOR LATER
+git stash                       # Quickly hide "half-finished" work to switch branches
+git stash pop                   # Bring your hidden work back
