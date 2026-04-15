@@ -1,0 +1,185 @@
+====================================
+IAM SECURITY CHALLENGES + LAB
+====================================
+
+------------------------------------
+PART 1: SPOT THE SECURITY ISSUE
+------------------------------------
+
+CHALLENGE 1:
+-rwxrwxrwx 1 root root 2048 Apr 14 passwords.txt
+
+QUESTION:
+What is wrong here?
+
+HINT:
+Think: Who can access this file?
+
+------------------------------------
+
+CHALLENGE 2:
+drwxr-xr-x 2 alice users 4096 Apr 14 .ssh/
+
+-rw-r--r-- 1 alice users  400 Apr 14 authorized_keys
+
+QUESTION:
+What is risky about this setup?
+
+------------------------------------
+
+CHALLENGE 3:
+-rw-r--r-- 1 root root 1024 Apr 14 secret.key
+
+QUESTION:
+Should everyone be able to read this?
+
+------------------------------------
+
+CHALLENGE 4:
+-rwsr-xr-x 1 root root 5000 Apr 14 script.sh
+
+QUESTION:
+What does the "s" mean? Why could this be dangerous?
+
+------------------------------------
+
+CHALLENGE 5:
+-rw-r--r-- 1 bob users 300 Apr 14 config.env
+
+(inside file:)
+DB_PASSWORD=admin123
+
+QUESTION:
+What are TWO security issues here?
+
+------------------------------------
+
+------------------------------------
+PART 2: MINI IAM AUDIT / HACKING LAB
+------------------------------------
+
+SCENARIO:
+You are an IAM engineer auditing a Linux server.
+Your job is to find and fix security problems.
+
+------------------------------------
+STEP 1: SETUP LAB
+------------------------------------
+mkdir audit_lab
+cd audit_lab
+
+mkdir secure public logs backups
+
+touch secure/passwords.txt
+touch secure/api.key
+touch public/readme.txt
+touch logs/app.log
+touch backups/backup.tar
+
+echo "admin password=1234" > secure/passwords.txt
+echo "API_KEY=SECRET123" > secure/api.key
+
+------------------------------------
+STEP 2: CREATE SECURITY PROBLEMS
+------------------------------------
+
+chmod 777 secure/passwords.txt
+chmod 644 secure/api.key
+chmod 755 public/
+touch .env
+echo "SECRET_TOKEN=abc123" > .env
+
+------------------------------------
+STEP 3: YOUR MISSION
+------------------------------------
+
+1. Find files with BAD permissions
+   (Hint: look for 777, world-readable secrets)
+
+2. Identify sensitive files:
+   - passwords
+   - keys
+   - .env
+
+3. Search for secrets inside files
+
+4. Fix all permission issues
+
+------------------------------------
+STEP 4: COMMANDS YOU SHOULD USE
+------------------------------------
+
+ls -lah
+ls -l
+find . -name "*.key"
+find . -name "*.txt"
+grep "password" -r .
+grep "KEY" -r .
+chmod
+cat
+less
+
+------------------------------------
+STEP 5: FIX THE SYSTEM
+------------------------------------
+
+- Lock down sensitive files (600)
+- Ensure only owner can access secrets
+- Remove public access
+
+------------------------------------
+FINAL GOAL:
+------------------------------------
+
+At the end, you should have:
+- No file with 777
+- No sensitive file readable by everyone
+- All secrets protected
+
+------------------------------------
+PART 3: WHEN YOU GET STUCK (COPY/PASTE)
+------------------------------------
+
+If you get confused, come back and ask:
+
+PROMPT 1:
+"Explain this output like I'm a beginner:
+<PASTE YOUR ls -l OUTPUT>"
+
+PROMPT 2:
+"What is wrong with these permissions:
+<PASTE OUTPUT>"
+
+PROMPT 3:
+"Walk me through fixing this step by step, don't give full answer at once."
+
+PROMPT 4:
+"Act like a teacher and ask me questions so I can figure this out."
+
+PROMPT 5:
+"I found this file, is it secure:
+<PASTE FILE + PERMISSIONS>"
+
+------------------------------------
+BONUS CHALLENGE (ADVANCED)
+------------------------------------
+
+1. Create a fake user file:
+   touch users.db
+
+2. Add fake credentials:
+   echo "user:password123" > users.db
+
+3. Make it insecure:
+   chmod 777 users.db
+
+4. Now:
+   - Find it
+   - Identify problem
+   - Fix it
+
+------------------------------------
+END OF LAB
+------------------------------------
+
+Continue my IAM Linux lab from where I left off. Act like a coach, don’t give full answers—guide me step by step.

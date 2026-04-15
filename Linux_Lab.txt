@@ -1,0 +1,85 @@
+====================================
+IAM DAILY PRACTICE LAB (10–20 MIN)
+====================================
+
+# STEP 1: SETUP LAB
+mkdir iam_lab
+cd iam_lab
+
+# Create users simulation (just files)
+mkdir users
+cd users
+touch alice.txt bob.txt admin.txt
+
+cd ..
+
+# STEP 2: CREATE SENSITIVE FILES
+mkdir secure public logs
+
+touch secure/passwords.txt
+touch secure/secret.key
+touch public/readme.txt
+touch logs/app.log
+
+# STEP 3: CHECK FILES
+ls -lah
+
+# STEP 4: CHANGE PERMISSIONS (LOCK DOWN)
+chmod 600 secure/passwords.txt
+chmod 600 secure/secret.key
+
+# Verify
+ls -l secure/
+
+# STEP 5: SIMULATE BAD PERMISSIONS
+chmod 777 secure/passwords.txt
+
+# Find the problem
+ls -l secure/
+
+# Fix it
+chmod 600 secure/passwords.txt
+
+# STEP 6: SEARCH FOR SENSITIVE FILES
+find . -name "*.key"
+find . -name "*.txt"
+
+# STEP 7: SEARCH INSIDE FILES
+echo "admin password=1234" > secure/passwords.txt
+grep "password" secure/passwords.txt
+
+# STEP 8: CHECK IDENTITY
+whoami
+id
+
+# STEP 9: VIEW FILES
+cat secure/passwords.txt
+less logs/app.log
+
+# STEP 10: AUDIT HIDDEN FILES
+touch .env
+ls -la
+
+# STEP 11: CHECK DISK USAGE
+du -sh *
+
+# STEP 12: REVIEW HISTORY
+history
+
+====================================
+DAILY GOALS
+====================================
+- Find insecure permissions
+- Fix them with chmod
+- Search files with find
+- Search content with grep
+- Understand ownership and access
+
+====================================
+CHALLENGE (DO THIS DAILY)
+====================================
+1. Create a file with bad permissions (777)
+2. Find it using ls or find
+3. Fix it
+4. Add fake sensitive data
+5. Find it using grep

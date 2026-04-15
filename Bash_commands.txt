@@ -1,0 +1,169 @@
+===============================
+IMPORTANT LS COMMANDS (IAM)
+===============================
+
+1. Basic detailed listing
+ls -l
+- Shows permissions, owner, group, size, timestamp
+
+2. Show hidden files (VERY IMPORTANT)
+ls -la
+- Includes hidden files like .ssh, .env
+
+3. Human-readable sizes
+ls -lh
+- Converts bytes to KB, MB, GB
+
+4. Most used combo (REMEMBER THIS)
+ls -lah
+- Detailed + hidden + readable sizes
+
+5. Sort by newest files
+ls -lt
+
+6. Oldest files first
+ls -ltr
+
+7. Show only directories
+ls -d */
+
+8. Show inode numbers (advanced)
+ls -i
+
+9. Check permissions of sensitive files
+ls -l /etc/passwd
+ls -l /etc/shadow
+
+10. Check ownership of user directories
+ls -ld /home/*
+
+11. Recursive listing (everything inside folders)
+ls -R
+
+12. Count number of files
+ls | wc -l
+
+13. Count including hidden files
+ls -a | wc -l
+
+14. Filter by file type (example: .log files)
+ls *.log
+
+15. Show only directories with details
+ls -ld */
+
+===============================
+IAM MUST-KNOW COMMAND
+===============================
+ls -lah /path/to/folder
+- Best command for auditing permissions and files
+
+===============================
+HELPFUL RELATED COMMANDS
+===============================
+stat file        # Detailed file info
+du -sh folder    # Folder size
+find . -name ""  # Search files
+getfacl file     # Advanced permissions
+
+===============================
+FLAG CHEAT SHEET
+===============================
+-l  → detailed info
+-a  → include hidden files
+-h  → human-readable sizes
+-t  → sort by time
+-R  → recursive (go inside folders)
+
+===============================
+TIP
+===============================
+Always check:
+- Permissions (rwx)
+- Owner and group
+- Hidden files
+- Sensitive configs (.ssh, .env)
+
+====================================
+IAM ESSENTIAL LINUX COMMANDS
+====================================
+
+# FILE LISTING
+ls -l        # detailed list (permissions, owner, size)
+ls -la       # include hidden files
+ls -lh       # human-readable sizes
+ls -lah      # (MOST USED) all + readable
+ls -lt       # newest first
+ls -ltr      # oldest first
+
+# NAVIGATION
+pwd          # show current directory
+cd /path     # change directory
+cd ..        # go up one level
+cd ~         # go home
+
+# IDENTITY (IAM CORE)
+whoami       # current user
+id           # user + groups
+
+# PERMISSIONS (CRITICAL)
+chmod 600 file.txt     # change permissions
+chmod 755 script.sh
+chown user:group file  # change owner
+
+# FILE OPERATIONS
+touch file.txt         # create file
+cp file.txt copy.txt   # copy file
+mv file.txt /tmp/      # move file
+rm file.txt            # delete file
+rm -rf folder/         # delete folder (danger)
+
+# FILE VIEWING
+cat file.txt           # show file content
+less file.txt          # view large files
+
+# SEARCHING (VERY IMPORTANT)
+find . -name "file.txt"
+find /home -user john
+grep "text" file.txt
+grep "user" /etc/passwd
+
+# DISK USAGE
+du -sh *               # folder sizes
+df -h                  # disk space
+
+# ADVANCED PERMISSIONS (IAM)
+getfacl file.txt       # view ACL
+setfacl -m u:john:r file.txt  # grant access
+
+# PROCESSES
+ps aux                 # running processes
+top                    # live system usage
+
+# PRIVILEGE
+sudo command           # run as admin
+
+# HISTORY / AUDIT
+history                # command history
+
+====================================
+MOST IMPORTANT COMMANDS TO MASTER
+====================================
+ls -lah
+chmod
+chown
+find
+grep
+id
+whoami
+cat / less
+sudo
+
+====================================
+IAM MINDSET
+====================================
+Always ask:
+- Who owns this?
+- Who can access this?
+- Where are sensitive files?
+- What changed?
