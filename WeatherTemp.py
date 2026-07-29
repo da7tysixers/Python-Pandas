@@ -1,4 +1,5 @@
 temperature = 91
+
 """
 if temperature > 90 or temperature < 95:
     print("It's a hot day")
@@ -17,4 +18,3 @@ if temperature > 80 and forcast == "sunny":
     print("Stay hydrated")
 elif temperature < 80 and forcast == "rainy":
         print("It's a cold day")
-
