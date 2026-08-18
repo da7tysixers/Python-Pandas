@@ -36,12 +36,17 @@ Help about* | more
 #The "about*" command will display all the help topics that start with the word 
 #"about". The "more" command allows you to view the output one page at a time.
 
+New-AzResourceGroup -Name "YourResourceGroupName" -Location "EastUS"
+#Creating resource group in Azure Cloud.
 
+az deployment group create --resource-group "YourResourceGroupName" --template-file "uploaded json file" --parameters "azure uploaded json parameter file"
+#Azure deployment using the CLI powershell cmdlet. Upload the template and parameter arm files
+#The arm file can be extracted or created from scratch.
 
+az group create -l "EastUS" -n "YourResourceGroupName"
+#This command will create a resource group in Azure using the Azure CLI. Using Bash.
 
-
-
-
-
+az provider show --namespace "YourFile" -o table
+#This shows namespace of the file you're looking for in Azure cloud
 
 
