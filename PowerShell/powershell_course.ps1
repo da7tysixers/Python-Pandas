@@ -49,4 +49,13 @@ az group create -l "EastUS" -n "YourResourceGroupName"
 az provider show --namespace "YourFile" -o table
 #This shows namespace of the file you're looking for in Azure cloud
 
+dotnet publish -o publish
+#Write this in the terminal if you want to create a publish application
+#run it within the app package opened in VS code.
+
+bash
+#If you have git installed from command line, you can use bash 
+#to run bash commands in the terminal. Just type "bash" in the terminal
+# and you will be able to run bash commands.
+
 
